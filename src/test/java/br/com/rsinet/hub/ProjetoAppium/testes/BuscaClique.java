@@ -41,7 +41,7 @@ public class BuscaClique {
 //Instancia o driver, as paginas, as ações de toque  e configura o arquivo de excel
 	@BeforeMethod
 	public void inicio() throws Exception {
-		driver = DriverManager.configDriver();
+		driver = DriverManager.iniciaDriver();
 		DriverManager.configExcel();
 		busca = new BuscaPage(driver);
 		home = new HomePage(driver);

@@ -40,7 +40,7 @@ public class BuscaLupa {
 	// excel
 	@BeforeMethod
 	public void inicio() throws Exception {
-		driver = DriverManager.configDriver();
+		driver = DriverManager.iniciaDriver();
 		DriverManager.configExcel();
 		busca = new BuscaPage(driver);
 		home = new HomePage(driver);

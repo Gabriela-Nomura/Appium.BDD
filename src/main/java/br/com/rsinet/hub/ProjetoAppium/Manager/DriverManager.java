@@ -19,12 +19,13 @@ public class DriverManager {
 	
 	public static DesiredCapabilities capabilities = new DesiredCapabilities();
 
-	public static AndroidDriver configDriver() throws Exception {
+	public static AndroidDriver iniciaDriver() throws Exception {
 		
 		capabilities.setCapability("deviceName", "CelularDaGabi");
 		capabilities.setCapability("platformName", "Android");
 		capabilities.setCapability("appPackage", "com.Advantage.aShopping");
 		capabilities.setCapability("appActivity", ".SplashActivity");
+		capabilities.setCapability("newCommandTimeOut", "120");
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		
 		AndroidDriver driver = null;
