@@ -1,4 +1,4 @@
-package br.com.rsinet.hub.ProjetoAppium.Pages;
+package br.com.rsinet.hub.ProjetoAppium.Screens;
 
 import java.util.concurrent.TimeUnit;
 

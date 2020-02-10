@@ -1,4 +1,4 @@
-package br.com.rsinet.hub.ProjetoAppium.Pages;
+package br.com.rsinet.hub.ProjetoAppium.Screens;
 
 import java.util.concurrent.TimeUnit;
 
@@ -58,42 +58,14 @@ public class HomePage {
 
 	}
 
-	private WebElement campoBusca() {
-		return driver.findElement(By.id("com.Advantage.aShopping:id/editTextSearch"));
-	}
-
-	public void insereValorLupaInvalido() throws Exception {
-		waitUntil(campoBusca());
-		campoBusca().sendKeys(MassaDeDados.buscaLupaFalha());
-	}
-
-	public void insereValorLupaValido() throws Exception {
-		waitUntil(campoBusca());
-		campoBusca().sendKeys(MassaDeDados.buscaLupa());
-	}
-
-	private WebElement lupaIcone() {
-		return driver.findElement(By.id("com.Advantage.aShopping:id/imageViewSearch"));
-	}
-
-	public void processaBusca() {
-		lupaIcone().click();
-	}
-
 	public void clicaNaNovaConta() {
 		
 		waitUntil(novaConta());
 		novaConta().click();
 	}
 
-	private WebElement HeadPhone() {
-		return driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[2]/android.widget.TextView"));
-	}
-
-	public void clickHeadphones() {
-		HeadPhone().click();
-	}
+	
+	
 
 	
 	

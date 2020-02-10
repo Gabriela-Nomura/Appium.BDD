@@ -1,79 +1,53 @@
 package br.com.rsinet.hub.ProjetoAppium.Steps;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.AssertJUnit;
-import static org.testng.Assert.assertTrue;
-
-import java.util.concurrent.TimeUnit;
-
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-
-import com.aventstack.extentreports.ExtentTest;
-
-import br.com.rsinet.hub.ProjetoAppium.Manager.DriverManager;
-import br.com.rsinet.hub.ProjetoAppium.Pages.BuscaPage;
-import br.com.rsinet.hub.ProjetoAppium.Pages.HomePage;
-import br.com.rsinet.hub.ProjetoAppium.Utils.ExtentReport;
-import io.appium.java_client.TouchAction;
+import br.com.rsinet.hub.ProjetoAppium.Manager.PageObjectManager;
+import br.com.rsinet.hub.ProjetoAppium.Screens.BuscaPage;
+import br.com.rsinet.hub.ProjetoAppium.Screens.HomePage;
+import br.com.rsinet.hub.ProjetoAppium.cucumber.ContextoDeTeste;
+import cucumber.api.java.pt.E;
+import cucumber.api.java.pt.Entao;
+import cucumber.api.java.pt.Quando;
 import io.appium.java_client.android.AndroidDriver;
 
 public class BuscaLupaSteps {
+	@SuppressWarnings("rawtypes")
 	public static AndroidDriver driver;
 	BuscaPage busca;
-	HomePage home;
-	TouchAction toque;
-	private ExtentTest test;
+	PageObjectManager pageObjectManager;
+	ContextoDeTeste contextoDeTeste;
 
-	// Inicia o reporte
-	@BeforeTest
-	public void report() {
-		ExtentReport.setExtent(); 
+	public BuscaLupaSteps(ContextoDeTeste contextoDeTeste) throws Exception {
+		this.contextoDeTeste = contextoDeTeste;
+		busca = contextoDeTeste.getPageObjectManager().getBuscaPage();
 	}
 
-	// Instancia o driver, as paginas, as ações de toque e configura o arquivo de
-	// excel
-	@BeforeMethod
-	public void inicio() throws Exception {
-		driver = DriverManager.iniciaDriver();
-		DriverManager.configExcel();
-		busca = new BuscaPage(driver);
-		home = new HomePage(driver);
-		toque = new TouchAction(driver);
+	@Quando("^clicar sobre o campo de pesquisa$")
+	public void clicar_sobre_a_lupa() throws Throwable {
+		busca.clicaNaLupa();
 	}
 
-	@Test
-	public void BuscaInvalida() throws Exception {
-		test = ExtentReport.createTest("Buscapelalupainvalida");
-		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
-		home.insereValorLupaInvalido();
-		home.processaBusca();
-		AssertJUnit.assertTrue(busca.semResultado());
+	@E("^enviar um \"([^\"]*)\" de busca$")
+	public void valor_busca_valida(String texto) throws Throwable {
+		busca.insereValorLupaValido(texto);
 	}
 
-	@Test
-	public void BuscaValida() throws Exception {
-		test = ExtentReport.createTest("Buscapelalupavalida");
-		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
-		home.insereValorLupaValido();
-		home.processaBusca();
-		AssertJUnit.assertTrue(busca.contemResultado());
+	@E("^processar a busca$")
+	public void processar_a_busca() {
+		busca.processaBusca();
 	}
 
-	@AfterMethod
-	public void finalizaReporta(ITestResult result) throws Exception {
-		ExtentReport.tearDown(result, test, driver);
-//		DriverManager.encerra(driver);
+	@Entao("^a busca retornara o resultado esperado$")
+	public void resultado_esperado() {
+		busca.resultadoEsperado();
 	}
 
-	@AfterTest
-	public void encerraReport() {
-		ExtentReport.endReport();
+	@E("^enviar o \"([^\"]*)\" de busca com o nome do produto$")
+	public void valor_busca_invalida(String texto) throws Throwable {
+		busca.insereValorLupaInvalido(texto);
+	}
 
+	@Entao("^a busca nao retorna nenhum resultado$")
+	public void a_busca_nao_retorna_nenhum_resultado() throws Throwable {
+		busca.resultadoInvalido();
 	}
 }

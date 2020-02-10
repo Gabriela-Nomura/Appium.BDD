@@ -1,8 +1,8 @@
 package br.com.rsinet.hub.ProjetoAppium.Steps;
 
 import br.com.rsinet.hub.ProjetoAppium.Manager.PageObjectManager;
-import br.com.rsinet.hub.ProjetoAppium.Pages.CadastraPage;
-import br.com.rsinet.hub.ProjetoAppium.Pages.HomePage;
+import br.com.rsinet.hub.ProjetoAppium.Screens.CadastraPage;
+import br.com.rsinet.hub.ProjetoAppium.Screens.HomePage;
 import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
 import br.com.rsinet.hub.ProjetoAppium.cucumber.ContextoDeTeste;
 import cucumber.api.java.pt.Dado;

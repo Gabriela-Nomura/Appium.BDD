@@ -51,27 +51,5 @@ public class MassaDeDados {
 		return ConfigExcel.getCellData(1, 6).toString();
 	}
 
-	public static final String userCidade() throws Exception {
-		return ConfigExcel.getCellData(1, 7);
-	}
-
-	public static final String userEndereco() throws Exception {
-		return ConfigExcel.getCellData(1, 8);
-	}
-
-	public static final String userEstado() throws Exception {
-		return ConfigExcel.getCellData(1, 9);
-	}
-
-	public static final String userCep() throws Exception {
-		return ConfigExcel.getCellData(1, 10).toString();
-	}
-
-	public static final String buscaLupa() throws Exception {
-		return ConfigExcel.getCellData(11, 0);
-	}
-
-	public static final String buscaLupaFalha() throws Exception {
-		return ConfigExcel.getCellData(12, 0);
-	}
+	
 }

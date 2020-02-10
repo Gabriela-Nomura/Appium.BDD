@@ -10,7 +10,10 @@ import cucumber.api.junit.Cucumber;
 glue = { "br.com.rsinet.hub.ProjetoAppium.Steps"}, 
 
 		plugin = { "com.cucumber.listener.ExtentCucumberFormatter:report.html" }, 
-		tags = {"@CadastroValido, @CadastroInvalido"},
+		tags =
+//	{"@CadastroValido, @CadastroInvalido"},
+//		{"@BuscaLupaValida, @BuscaLupaInvalida"},
+	{"@BuscaCliqueSucesso, @BuscaCliqueFalha "},
 monochrome = true)
 public class TesteRunner {
 	

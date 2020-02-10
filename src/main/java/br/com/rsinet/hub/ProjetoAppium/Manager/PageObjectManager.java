@@ -1,8 +1,9 @@
 package br.com.rsinet.hub.ProjetoAppium.Manager;
 
-import br.com.rsinet.hub.ProjetoAppium.Pages.BuscaPage;
-import br.com.rsinet.hub.ProjetoAppium.Pages.CadastraPage;
-import br.com.rsinet.hub.ProjetoAppium.Pages.HomePage;
+import br.com.rsinet.hub.ProjetoAppium.Screens.BuscaPage;
+import br.com.rsinet.hub.ProjetoAppium.Screens.CadastraPage;
+import br.com.rsinet.hub.ProjetoAppium.Screens.HomePage;
+import br.com.rsinet.hub.ProjetoAppium.cucumber.ContextoDeTeste;
 import io.appium.java_client.android.AndroidDriver;
 
 public class PageObjectManager {

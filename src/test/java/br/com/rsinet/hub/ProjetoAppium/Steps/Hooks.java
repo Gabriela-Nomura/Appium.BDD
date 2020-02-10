@@ -10,9 +10,9 @@ import com.cucumber.listener.Reporter;
 import com.google.common.io.Files;
 
 import br.com.rsinet.hub.ProjetoAppium.Manager.PageObjectManager;
-import br.com.rsinet.hub.ProjetoAppium.Pages.BuscaPage;
-import br.com.rsinet.hub.ProjetoAppium.Pages.CadastraPage;
-import br.com.rsinet.hub.ProjetoAppium.Pages.HomePage;
+import br.com.rsinet.hub.ProjetoAppium.Screens.BuscaPage;
+import br.com.rsinet.hub.ProjetoAppium.Screens.CadastraPage;
+import br.com.rsinet.hub.ProjetoAppium.Screens.HomePage;
 import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
 import br.com.rsinet.hub.ProjetoAppium.cucumber.ContextoDeTeste;
 import cucumber.api.Scenario;
@@ -42,8 +42,7 @@ public class Hooks {
 
 	@After(order=0) 
 	public void quitConfig() throws Exception {
-		contextoDeTeste.getandroidDriverManager().encerra();
-		Reporter.addStepLog ("O teste foi finalizado ");
+		driver = contextoDeTeste.getandroidDriverManager().encerra();
 	}
 	@After(order=1)
 	 public void afterScenario(Scenario scenario) throws WebDriverException, Exception {
