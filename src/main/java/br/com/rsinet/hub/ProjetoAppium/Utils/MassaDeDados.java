@@ -58,7 +58,10 @@ public class MassaDeDados {
 		}
 	}
 
-	public static String URL = "https://www.advantageonlineshopping.com/";
+
+	
+
+	
 
 	public static final String Path_TestData = "C://Users//gabriela.nomura//Documents//automacao//testData.xlsx";
 

@@ -2,40 +2,40 @@ package br.com.rsinet.hub.ProjetoAppium.Manager;
 
 import org.openqa.selenium.WebDriver;
 
-import br.com.rsinet.hub_BDD.pageFactory.CadastraPagePOF;
-import br.com.rsinet.hub_BDD.pageFactory.HomePagePOF;
-import br.com.rsinet.hub_BDD.pageFactory.PaginaBuscaPOF;
+import br.com.rsinet.hub.ProjetoAppium.Pages.BuscaPage;
+import br.com.rsinet.hub.ProjetoAppium.Pages.CadastraPage;
+import br.com.rsinet.hub.ProjetoAppium.Pages.HomePage;
 
 public class PageObjectManager {
 
 	private WebDriver driver;
 
-	private CadastraPagePOF cadastraPagePOF;
+	private CadastraPage cadastra;
 
-	private PaginaBuscaPOF buscaPage;
+	private BuscaPage busca;
 
-	private HomePagePOF homePagePOF;
+	private HomePage home;
 
 	public PageObjectManager(WebDriver driver) {	 
 		 this.driver = driver;
 		 
 		 }
 
-	public HomePagePOF getHomePage() {
+	public HomePage getHomePage() {
 
-		return (homePagePOF == null) ? homePagePOF = new HomePagePOF(driver) : homePagePOF;
-
-	}
-
-	public CadastraPagePOF getcadastraPage() {
-
-		return (cadastraPagePOF == null) ? cadastraPagePOF = new CadastraPagePOF(driver) : cadastraPagePOF;
+		return (home == null) ? home = new HomePage(driver) : home;
 
 	}
 
-	public PaginaBuscaPOF getBuscaPage() {
+	public CadastraPage getcadastraPage() {
 
-		return (buscaPage == null) ? buscaPage = new PaginaBuscaPOF(driver) : buscaPage;
+		return (cadastra == null) ? cadastra = new CadastraPage(driver) : cadastra;
+
+	}
+
+	public BuscaPage getBuscaPage() {
+
+		return (busca == null) ? busca = new BuscaPage(driver) : busca;
 
 	}
 

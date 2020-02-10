@@ -1,50 +1,37 @@
 # language: pt
 #coding: UTF-8
-Funcionalidade: Cadastro de novos usuarios
+Funcionalidade: Cadastro de um novo usuario
 
-Deve realizar o cadastro de um novo usuario com informacoes validas, 
+Deve realizar o cadastro de um novo usuario, quando inserir informacoes validas, 
 e rejeitar tentativas com informacoes incorretas.
 
 Contexto:
 	Dado que esteja na pagina inicial da aplicacao
-	Quando clicar sobre minha conta
+	Quando clicar no menu
+	E clicar no login
+	E selecionar a opcao de criar uma nova conta
 	
 @CadastroValido
 Cenario: Cadastro de um novo usuario com sucesso
 		
-		E selecionar a opcao criar nova conta
-		E inserir um nome de usuario valido
+		Quando inserir um nome de usuario valido
 		E inserir email valido
 		E inserir senha valida
 		E inserir contra senha valida 
 		E inserir o primeiro nome
 		E inserir o ultimo nome
 		E inserir o numero de telefone
-		E selecionar o pais
-		E informar a cidade
-		E informar o endereco 
-		E informar o estado 
-		E informar o CEP
-		E aceitar os termos de aceitacao
+		E ajustar a tela
+		E ativar o preenchimento automatico pelo gps
+		E aceitar que o app obtenha a localizacao do dispositivo
 		E clicar no registro
-		Entao o novo usuario deve ser logado e direcionado a homepage com nome de usuario sendo exibido
+		Entao na homepage, no menu, o nome do usuario sera exibido
 		
 @CadastroInvalido
 Cenario: Cadastro de um novo usuario com falha
 		
-		E selecionar a opcao criar nova conta
-		E inserir um nome de usuario invalido
+		E inserir um nome de usuario ja cadastrado
 		E inserir email valido
 		E inserir senha valida
-		E inserir contra senha valida 
-		E inserir o primeiro nome
-		E inserir o ultimo nome
-		E inserir o numero de telefone
-		E selecionar o pais
-		E informar a cidade
-		E informar o endereco 
-		E informar o estado 
-		E informar o CEP
-		E aceitar os termos de aceitacao
 		E clicar no registro 
 		Entao o cadastro nao sera concluido e a mensagem de erro aparecera

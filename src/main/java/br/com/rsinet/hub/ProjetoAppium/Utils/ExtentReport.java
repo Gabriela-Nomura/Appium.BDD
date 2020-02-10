@@ -46,17 +46,4 @@ public class ExtentReport {
 	public static ExtentTest createTest(String testName) {
 		return extent.createTest(testName);
 	}
-
-	public static void tearDown(ITestResult result, ExtentTest test, WebDriver driver) throws Exception {
-		String caminho = Prints.tirarPrints(driver, result.getName());
-		if (result.getStatus() == ITestResult.FAILURE) {
-			test.log(Status.FAIL, "Caso de teste falhou " + result.getName()); // Adiciona o nome na extenção reporte
-			test.log(Status.FAIL, "Caso de teste falhou " + result.getThrowable()); // Adiciona o erro/ exceção
-		} else if (result.getStatus() == ITestResult.SKIP) {
-			test.log(Status.SKIP, "Caso de teste que pulou " + result.getName());
-		} else if (result.getStatus() == ITestResult.SUCCESS) {
-			test.log(Status.PASS, "Caso de teste passou " + result.getName());
-		}
-		test.addScreenCaptureFromPath(caminho);
-	}
 }

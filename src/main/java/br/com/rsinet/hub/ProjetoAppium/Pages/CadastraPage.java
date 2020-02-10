@@ -1,7 +1,5 @@
 package br.com.rsinet.hub.ProjetoAppium.Pages;
 
-import java.util.UUID;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,8 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
 import br.com.rsinet.hub.ProjetoAppium.Utils.UserName;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.offset.PointOption;
 
 public class CadastraPage {
 	/**

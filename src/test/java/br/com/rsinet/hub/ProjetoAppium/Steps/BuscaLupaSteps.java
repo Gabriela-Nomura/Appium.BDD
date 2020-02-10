@@ -1,4 +1,4 @@
-package br.com.rsinet.hub.ProjetoAppium.testes;
+package br.com.rsinet.hub.ProjetoAppium.Steps;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
@@ -23,7 +23,7 @@ import br.com.rsinet.hub.ProjetoAppium.Utils.ExtentReport;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 
-public class BuscaLupa {
+public class BuscaLupaSteps {
 	public static AndroidDriver driver;
 	BuscaPage busca;
 	HomePage home;

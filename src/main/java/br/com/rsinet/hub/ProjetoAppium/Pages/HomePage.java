@@ -21,6 +21,9 @@ public class HomePage {
 
 	}
 
+	public static void main(String[] args) {
+		
+	}
 	// Metodo para aguardar visibilidade do elemento passado como parametro
 	private void waitUntil(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, 100);
