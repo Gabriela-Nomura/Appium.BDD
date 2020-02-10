@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
 
@@ -37,7 +38,6 @@ public class HomePage {
 	}
 
 	public void clicaNoMenu() {
-		waitUntil(menuIcone());
 		menuIcone().click();
 	}
 
@@ -81,6 +81,7 @@ public class HomePage {
 	}
 
 	public void clicaNaNovaConta() {
+		
 		waitUntil(novaConta());
 		novaConta().click();
 	}
@@ -93,5 +94,8 @@ public class HomePage {
 	public void clickHeadphones() {
 		HeadPhone().click();
 	}
+
+	
+	
 
 }

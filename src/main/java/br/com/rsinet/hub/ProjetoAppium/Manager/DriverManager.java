@@ -20,6 +20,7 @@ public class DriverManager {
 
 	@SuppressWarnings("rawtypes")
 	public AndroidDriver iniciaDriver() throws Exception {
+		if (driver == null) {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", "CelularDaGabi");
@@ -29,17 +30,16 @@ public class DriverManager {
 		capabilities.setCapability("newCommandTimeOut", "120");
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 
-		AndroidDriver driver = null;
-		if (driver == null) {
 			driver = new AndroidDriver<MobileElement>(url, capabilities);
 
 		}
 		return driver;
 	}
 
-	public static void encerra(WebDriver driver) {
+	public AndroidDriver encerra() {
 		if (driver != null) {
 			driver.close();
 		}
+		return driver = null;
 	}
 }

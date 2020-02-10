@@ -17,7 +17,7 @@ Cenario: Cadastro de um novo usuario com sucesso
 		Quando inserir um nome de usuario valido
 		E inserir email valido
 		E inserir senha valida
-		E inserir contra senha valida 
+		E inserir a confirmacao de senha 
 		E inserir o primeiro nome
 		E inserir o ultimo nome
 		E inserir o numero de telefone
@@ -30,8 +30,10 @@ Cenario: Cadastro de um novo usuario com sucesso
 @CadastroInvalido
 Cenario: Cadastro de um novo usuario com falha
 		
-		E inserir um nome de usuario ja cadastrado
+		Quando inserir um nome de usuario ja cadastrado
 		E inserir email valido
 		E inserir senha valida
+		E inserir a confirmacao de senha 
+		E ajustar a tela
 		E clicar no registro 
 		Entao o cadastro nao sera concluido e a mensagem de erro aparecera

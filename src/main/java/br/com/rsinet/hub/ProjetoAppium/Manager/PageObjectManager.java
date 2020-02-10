@@ -1,14 +1,13 @@
 package br.com.rsinet.hub.ProjetoAppium.Manager;
 
-import org.openqa.selenium.WebDriver;
-
 import br.com.rsinet.hub.ProjetoAppium.Pages.BuscaPage;
 import br.com.rsinet.hub.ProjetoAppium.Pages.CadastraPage;
 import br.com.rsinet.hub.ProjetoAppium.Pages.HomePage;
+import io.appium.java_client.android.AndroidDriver;
 
 public class PageObjectManager {
 
-	private WebDriver driver;
+	private AndroidDriver driver;
 
 	private CadastraPage cadastra;
 
@@ -16,7 +15,7 @@ public class PageObjectManager {
 
 	private HomePage home;
 
-	public PageObjectManager(WebDriver driver) {	 
+	public PageObjectManager(AndroidDriver driver) {	 
 		 this.driver = driver;
 		 
 		 }

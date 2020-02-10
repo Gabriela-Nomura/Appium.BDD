@@ -1,24 +1,23 @@
 package br.com.rsinet.hub.ProjetoAppium.Steps;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import java.io.File;
 
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriverException;
 
-import br.com.rsinet.hub.ProjetoAppium.Manager.DriverManager;
+import com.cucumber.listener.Reporter;
+import com.google.common.io.Files;
+
 import br.com.rsinet.hub.ProjetoAppium.Manager.PageObjectManager;
 import br.com.rsinet.hub.ProjetoAppium.Pages.BuscaPage;
 import br.com.rsinet.hub.ProjetoAppium.Pages.CadastraPage;
 import br.com.rsinet.hub.ProjetoAppium.Pages.HomePage;
-import br.com.rsinet.hub.ProjetoAppium.Utils.ExtentReport;
 import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
-import br.com.rsinet.hub.ProjetoAppium.Utils.Prints;
 import br.com.rsinet.hub.ProjetoAppium.cucumber.ContextoDeTeste;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import io.appium.java_client.android.AndroidDriver;
 
 public class Hooks {
@@ -35,37 +34,37 @@ public class Hooks {
 		this.contextoDeTeste = contextoDeTeste;
 	}
 
-	@BeforeTest
-	public void report() {
-		ExtentReport.setExtent();
-	}
-
-	@BeforeMethod
-	public static void inicio() throws Exception {
+	@Before
+	public void inicio() throws Exception {
 		driver = contextoDeTeste.getandroidDriverManager().iniciaDriver();
-		MassaDeDados.setExcelFile(MassaDeDados.Path_TestData, "Teste");
+		MassaDeDados.configExcel();
 	}
 
-	@AfterMethod
-	public static void tearDown(ITestResult result, ExtentTest test, WebDriver driver) throws Exception {
-		String caminho = Prints.tirarPrints(driver, result.getName());
-		if (result.getStatus() == ITestResult.FAILURE) {
-			test.log(Status.FAIL, "Caso de teste falhou " + result.getName()); // Adiciona o nome na extenção reporte
-			test.log(Status.FAIL, "Caso de teste falhou " + result.getThrowable()); // Adiciona o erro/ exceção
-		} else if (result.getStatus() == ITestResult.SKIP) {
-			test.log(Status.SKIP, "Caso de teste que pulou " + result.getName());
-		} else if (result.getStatus() == ITestResult.SUCCESS) {
-			test.log(Status.PASS, "Caso de teste passou " + result.getName());
-		}
-		test.addScreenCaptureFromPath(caminho);
-
-		DriverManager.encerra(driver);
+	@After(order=0) 
+	public void quitConfig() throws Exception {
+		driver = contextoDeTeste.getandroidDriverManager().encerra();
+		Reporter.addStepLog ("O teste foi finalizado ");
 	}
+	@After(order=1)
+	 public void afterScenario(Scenario scenario) throws WebDriverException, Exception {
+		
+		 String screenshotName = scenario.getName().replaceAll(" ", "_");
+		
+		 //This takes a screenshot from the driver at save it to the specified location
+		 File sourcePath = ((TakesScreenshot) contextoDeTeste.getandroidDriverManager().iniciaDriver()).getScreenshotAs(OutputType.FILE);
+		 
+		 //Building up the destination path for the screenshot to save
+		 //Also make sure to create a folder 'screenshots' with in the cucumber-report folder
+		 File destinationPath = new File(System.getProperty("user.dir") + "/target/cucumber-reports/screenshots/" + screenshotName + ".png");
+		 
+		 //Copy taken screenshot from source location to destination location
+		 Files.copy(sourcePath, destinationPath);   
+		 
+		 //This attach the specified screenshot to the test
+		 Reporter.addScreenCaptureFromPath(destinationPath.toString());
+		 Reporter.addStepLog ("Print obtido com sucesso ");
+		 }
+		 }
+		 
 
-	@AfterTest
-	public void encerraReport() {
-		ExtentReport.endReport();
 
-	}
-
-}

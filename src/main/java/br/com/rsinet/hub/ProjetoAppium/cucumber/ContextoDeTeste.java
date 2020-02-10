@@ -10,7 +10,7 @@ public class ContextoDeTeste {
 //	 ContextoDeCenario  contextoCenario;
 	 
 	public ContextoDeTeste() throws Exception {
-		androidDriverManager = new DriverManager();
+		androidDriverManager = new DriverManager(); 
 		pageObjectManager = new PageObjectManager(androidDriverManager.iniciaDriver());
 //		contextoCenario = new ContextoDeCenario();
 	}
