@@ -38,7 +38,7 @@ public class DriverManager {
 
 	public AndroidDriver encerra() {
 		if (driver != null) {
-			driver.close();
+			driver.quit();
 		}
 		return driver = null;
 	}

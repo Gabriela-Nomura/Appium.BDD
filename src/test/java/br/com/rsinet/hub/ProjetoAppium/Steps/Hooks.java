@@ -42,7 +42,7 @@ public class Hooks {
 
 	@After(order=0) 
 	public void quitConfig() throws Exception {
-		driver = contextoDeTeste.getandroidDriverManager().encerra();
+		contextoDeTeste.getandroidDriverManager().encerra();
 		Reporter.addStepLog ("O teste foi finalizado ");
 	}
 	@After(order=1)
