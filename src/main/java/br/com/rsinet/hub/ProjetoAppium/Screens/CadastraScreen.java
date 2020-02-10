@@ -13,13 +13,13 @@ import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
 import br.com.rsinet.hub.ProjetoAppium.Utils.UserName;
 import io.appium.java_client.android.AndroidDriver;
 
-public class CadastraPage {
+public class CadastraScreen {
 	/**
 	 * Classe de manipulacao de webElements da pagina de cadastro
 	 */
-	final AndroidDriver<WebElement> driver;
+	final AndroidDriver driver;
 
-	public CadastraPage(AndroidDriver driver) {
+	public CadastraScreen(AndroidDriver driver) {
 		this.driver = driver;
 
 	}
@@ -78,6 +78,8 @@ public class CadastraPage {
 		return driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout/android.widget.ImageView[1]"));
 	}
 	public void clicaNoMenu() {
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+
 		waitUntil(menuIcone2());
 		menuIcone2().click();
 	}

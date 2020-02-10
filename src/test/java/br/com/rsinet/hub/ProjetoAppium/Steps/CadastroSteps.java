@@ -1,8 +1,8 @@
 package br.com.rsinet.hub.ProjetoAppium.Steps;
 
-import br.com.rsinet.hub.ProjetoAppium.Manager.PageObjectManager;
-import br.com.rsinet.hub.ProjetoAppium.Screens.CadastraPage;
-import br.com.rsinet.hub.ProjetoAppium.Screens.HomePage;
+import br.com.rsinet.hub.ProjetoAppium.Manager.ScreenObjectManager;
+import br.com.rsinet.hub.ProjetoAppium.Screens.CadastraScreen;
+import br.com.rsinet.hub.ProjetoAppium.Screens.HomeScreen;
 import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
 import br.com.rsinet.hub.ProjetoAppium.cucumber.ContextoDeTeste;
 import cucumber.api.java.pt.Dado;
@@ -14,9 +14,9 @@ import io.appium.java_client.android.AndroidDriver;
 public class CadastroSteps {
 
 	public static AndroidDriver driver;
-	CadastraPage cadastra;
-	HomePage home;
-	PageObjectManager pageObjectManager;
+	CadastraScreen cadastra;
+	HomeScreen home;
+	ScreenObjectManager pageObjectManager;
 	ContextoDeTeste contextoDeTeste;
 
 	public CadastroSteps(ContextoDeTeste contextoDeTeste) throws Exception {

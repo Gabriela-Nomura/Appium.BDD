@@ -9,10 +9,10 @@ import org.openqa.selenium.WebDriverException;
 import com.cucumber.listener.Reporter;
 import com.google.common.io.Files;
 
-import br.com.rsinet.hub.ProjetoAppium.Manager.PageObjectManager;
-import br.com.rsinet.hub.ProjetoAppium.Screens.BuscaPage;
-import br.com.rsinet.hub.ProjetoAppium.Screens.CadastraPage;
-import br.com.rsinet.hub.ProjetoAppium.Screens.HomePage;
+import br.com.rsinet.hub.ProjetoAppium.Manager.ScreenObjectManager;
+import br.com.rsinet.hub.ProjetoAppium.Screens.BuscaScreen;
+import br.com.rsinet.hub.ProjetoAppium.Screens.CadastraScreen;
+import br.com.rsinet.hub.ProjetoAppium.Screens.HomeScreen;
 import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
 import br.com.rsinet.hub.ProjetoAppium.cucumber.ContextoDeTeste;
 import cucumber.api.Scenario;
@@ -22,11 +22,11 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class Hooks {
 
-	PageObjectManager pageObjectManager;
+	ScreenObjectManager pageObjectManager;
 	static ContextoDeTeste contextoDeTeste;
-	BuscaPage busca;
-	HomePage home;
-	CadastraPage cadastra;
+	BuscaScreen busca;
+	HomeScreen home;
+	CadastraScreen cadastra;
 	@SuppressWarnings("rawtypes")
 	static	AndroidDriver driver;
 

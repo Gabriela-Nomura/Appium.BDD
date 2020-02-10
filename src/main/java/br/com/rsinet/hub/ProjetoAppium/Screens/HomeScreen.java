@@ -10,21 +10,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
+import io.appium.java_client.android.AndroidDriver;
 
-public class HomePage {
+public class HomeScreen {
 	/**
 	 * Classe de manipulacao de webElements da pagina inicial da aplicacao
 	 */
-	final WebDriver driver;
+	final AndroidDriver driver;
 
-	public HomePage(WebDriver driver) {
+	public HomeScreen(AndroidDriver driver) {
 		this.driver = driver;
 
 	}
 
-	public static void main(String[] args) {
-		
-	}
+
 	// Metodo para aguardar visibilidade do elemento passado como parametro
 	private void waitUntil(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, 100);

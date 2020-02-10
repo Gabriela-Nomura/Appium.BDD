@@ -1,7 +1,7 @@
 package br.com.rsinet.hub.ProjetoAppium.Steps;
 
-import br.com.rsinet.hub.ProjetoAppium.Manager.PageObjectManager;
-import br.com.rsinet.hub.ProjetoAppium.Screens.BuscaPage;
+import br.com.rsinet.hub.ProjetoAppium.Manager.ScreenObjectManager;
+import br.com.rsinet.hub.ProjetoAppium.Screens.BuscaScreen;
 import br.com.rsinet.hub.ProjetoAppium.cucumber.ContextoDeTeste;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
@@ -14,8 +14,8 @@ public class BuscaCliqueSteps {
 	 */
 	@SuppressWarnings("rawtypes")
 	public static AndroidDriver driver;
-	private BuscaPage busca;
-	PageObjectManager pageObjectManager;
+	private BuscaScreen busca;
+	ScreenObjectManager pageObjectManager;
 	ContextoDeTeste contextoDeTeste;
 
 	public BuscaCliqueSteps(ContextoDeTeste contextoDeTeste) throws Exception {
@@ -56,7 +56,7 @@ public class BuscaCliqueSteps {
 
 	@Entao("^a busca nao retorna o resultado$")
 	public void produto_nao_encontrado() {
-		busca.resultadoEsperado();
+		busca.resultadoInvalido();
 	}
 
 }

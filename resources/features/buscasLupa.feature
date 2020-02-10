@@ -9,7 +9,7 @@ Funcionalidade: Busca pelo campo de busca
 
   @BuscaLupaValida
   Esquema do Cenario: Busca pela lupa valida
-    E enviar um "<parametroBuscaValida>" de busca
+    Quando enviar um "<parametroBuscaValida>" de busca
     E processar a busca
     Entao a busca retornara o resultado esperado
 
@@ -19,7 +19,7 @@ Funcionalidade: Busca pelo campo de busca
 
   @BuscaLupaInvalida
   Esquema do Cenario: Busca pela lupa invalida
-    E enviar o "<parametroBuscaInvalida>" de busca com o nome do produto
+    Quando enviar o "<parametroBuscaInvalida>" de busca com o nome do produto
     E processar a busca
     Entao a busca nao retorna nenhum resultado
 

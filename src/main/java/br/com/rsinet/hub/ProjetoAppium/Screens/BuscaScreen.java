@@ -10,13 +10,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BuscaPage {
+import io.appium.java_client.android.AndroidDriver;
+
+public class BuscaScreen {
 	/**
 	 * Classe de manipulacao de webElements das paginas de buscas
 	 */
-	final WebDriver driver;
+	final AndroidDriver driver;
 
-	public BuscaPage(WebDriver driver) {
+	public BuscaScreen(AndroidDriver driver) {
 		this.driver = driver;
 	}
 
@@ -30,7 +32,7 @@ public class BuscaPage {
 	}
 
 	private WebElement resultado(){
-		return driver.findElement(By.id("com.Advantage.aShopping:id/RelativeLayoutProductControl"));
+		return driver.findElement(By.id("com.Advantage.aShopping:id/imageViewProduct"));
 	}
 		public boolean contemResultado() {
 			waitUntil(resultado());
@@ -41,10 +43,11 @@ public class BuscaPage {
 			assertTrue(semResultado());
 		}
 	private WebElement fone() {
-	return  driver.findElement(By.xpath("//android.widget.RelativeLayout[@content-desc=\"Headphones\"]/android.widget.LinearLayout/android.widget.GridView/android.widget.RelativeLayout[1]/android.widget.TextView[1]"));
+	return  driver.findElement(By.xpath(
+			"//android.widget.RelativeLayout[@content-desc=\"Headphones\"]/android.widget.LinearLayout/android.widget.GridView/android.widget.RelativeLayout[1]/android.widget.TextView[1]"));
 	}
 	
-	public void selecionaFone() {
+	public void selecionaFone() throws InterruptedException {
 		waitUntil(fone());
 		fone().click();
 	}
@@ -54,7 +57,10 @@ public class BuscaPage {
 	}
 
 	public void clickHeadphones() {
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 		HeadPhone().click();
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+
 	}
 	public boolean resultadoClique() {
 		return driver.findElement(By.id("com.Advantage.aShopping:id/textViewProductName")).isDisplayed();
@@ -68,9 +74,12 @@ public class BuscaPage {
 	}
 
 	public void clicaNaLupa() throws Exception {
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+		waitUntil(campoBusca());
 		campoBusca().click();
 	}
 		public void insereValorLupaInvalido(String texto) {
+			waitUntil(campoBusca());
 			campoBusca().sendKeys(texto);
 	}
 
@@ -88,6 +97,8 @@ public class BuscaPage {
 	}
 
 	public void resultadoEsperado() {
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+
 		assertTrue(contemResultado());
 		
 	}
