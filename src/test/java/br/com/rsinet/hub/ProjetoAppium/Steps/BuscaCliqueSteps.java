@@ -1,5 +1,7 @@
 package br.com.rsinet.hub.ProjetoAppium.Steps;
 
+import com.cucumber.listener.Reporter;
+
 import br.com.rsinet.hub.ProjetoAppium.Manager.ScreenObjectManager;
 import br.com.rsinet.hub.ProjetoAppium.Screens.BuscaScreen;
 import br.com.rsinet.hub.ProjetoAppium.cucumber.ContextoDeTeste;
@@ -36,6 +38,9 @@ public class BuscaCliqueSteps {
 	@Entao("^o produto aberto sera correspondente ao selecionado$")
 	public void o_produto_aberto_sera_correspondente_ao_selecionado() throws Throwable {
 		busca.resultadoClique();
+		Reporter.addStepLog("O produto aberto e correspondente ao selecionado");
+		Reporter.addStepLog("O teste foi finalizado.");
+
 
 	}
 
@@ -52,11 +57,17 @@ public class BuscaCliqueSteps {
 	@E("^aplicar os filtros$")
 	public void aplicar_os_filtros() throws Throwable {
 		busca.aplicaFiltro();
+		Reporter.addStepLog("Os filtros selecionados foram aplicados");
+
 	}
 
 	@Entao("^a busca nao retorna o resultado$")
 	public void produto_nao_encontrado() {
 		busca.resultadoInvalido();
+		Reporter.addStepLog("A busca nao retornou nenhum resultado");
+		Reporter.addStepLog("O teste foi finalizado.");
+
+
 	}
 
 }

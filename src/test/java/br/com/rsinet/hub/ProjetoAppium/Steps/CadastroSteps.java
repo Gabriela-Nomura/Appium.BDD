@@ -1,5 +1,7 @@
 package br.com.rsinet.hub.ProjetoAppium.Steps;
 
+import com.cucumber.listener.Reporter;
+
 import br.com.rsinet.hub.ProjetoAppium.Manager.ScreenObjectManager;
 import br.com.rsinet.hub.ProjetoAppium.Screens.CadastraScreen;
 import br.com.rsinet.hub.ProjetoAppium.Screens.HomeScreen;
@@ -26,11 +28,9 @@ public class CadastroSteps {
 
 	}
 
-//@CadastroValido
-
 	@Dado("^que esteja na pagina inicial da aplicacao$")
 	public void que_esteja_na_pagina_inicial_da_aplicacao() throws Throwable {
-//PENSAR OQ FAZER
+		Reporter.addStepLog("A aplicacao foi iniciada com sucesso");
 	}
 
 	@Quando("^clicar no menu$")
@@ -50,14 +50,19 @@ public class CadastroSteps {
 
 	@Quando("^inserir um nome de usuario valido$")
 	public void inserir_um_nome_de_usuario_valido() throws Throwable {
-//		Reporter.addScenarioLog(message);
-//		.createTest("Cenario: cadastro valido ");
 		cadastra.insereNomeUsuario();
+		Reporter.addStepLog("O nome de usuario, gerado aleatoriamente, foi inserido");
+
+	}
+
+	@E("^inserir \"([^\"]*)\" valido$")
+	public void inserir_email_valido(String email) throws Throwable {
+		cadastra.insereEmail(email);
 	}
 
 	@E("^inserir email valido$")
 	public void inserir_email_valido() throws Throwable {
-		cadastra.insereEmail();
+		cadastra.insereEmail1();
 	}
 
 	@E("^inserir senha valida$")
@@ -86,7 +91,6 @@ public class CadastroSteps {
 	}
 
 	@E("^ajustar a tela$")
-	// PENSAR METODO PARA AJUSTAR A TELA
 	public void ajustar_a_tela() throws Throwable {
 		cadastra.ajustaTela("REGISTER");
 	}
@@ -99,6 +103,8 @@ public class CadastroSteps {
 	@E("^aceitar que o app obtenha a localizacao do dispositivo$")
 	public void aceitar_que_o_app_obtenha_a_localizacao_do_dispositivo() throws Throwable {
 		cadastra.autorizaLocalizacao();
+		Reporter.addStepLog("O endereco do usuario foi inserido automaticamente pela localizacao do GPS");
+
 	}
 
 	@E("^clicar no registro$")
@@ -110,17 +116,21 @@ public class CadastroSteps {
 	public void na_homepage_no_menu_o_nome_do_usuario_sera_exibido() throws Throwable {
 		cadastra.clicaNoMenu();
 		cadastra.testaValido();
+		Reporter.addStepLog("O novo cadastro foi concluido com sucesso, o nome de usuario é mostrado na tela");
+		Reporter.addStepLog("O teste foi finalizado.");
 
 	}
 
 	@Quando("^inserir um nome de usuario ja cadastrado$")
 	public void inserir_um_nome_de_usuario_ja_cadastrado() throws Throwable {
-//		test = ExtentReport.createTest("CadastroFalha");
 		cadastra.insereNomeInvalido(1);
 	}
 
 	@Entao("^o cadastro nao sera concluido e a mensagem de erro aparecera$")
 	public void o_cadastro_nao_sera_concluido_e_a_mensagem_de_erro_aparecera() throws Throwable {
 		cadastra.testaInvalido();
+		Reporter.addStepLog("O cadastro nao foi autorizado e mensagem de erro foi mostrada ");
+		Reporter.addStepLog("O teste foi finalizado.");
+
 	}
 }

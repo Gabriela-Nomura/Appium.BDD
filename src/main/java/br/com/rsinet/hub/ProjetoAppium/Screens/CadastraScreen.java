@@ -2,12 +2,11 @@ package br.com.rsinet.hub.ProjetoAppium.Screens;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import br.com.rsinet.hub.ProjetoAppium.Utils.MassaDeDados;
 import br.com.rsinet.hub.ProjetoAppium.Utils.UserName;
@@ -53,10 +52,13 @@ public class CadastraScreen {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout/android.widget.EditText"));
 	}
 
-	public void insereEmail() throws Exception {
-		emailBox().sendKeys(MassaDeDados.userEmail());
+	public void insereEmail(String email) throws Exception {
+		emailBox().sendKeys(email);
 	}
 
+	public void insereEmail1() throws Exception {
+		emailBox().sendKeys(MassaDeDados.userEmail());
+	}
 	private WebElement senhaBox() {
 		return driver.findElement(By.xpath(
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.EditText"));
@@ -80,7 +82,6 @@ public class CadastraScreen {
 	public void clicaNoMenu() {
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 
-		waitUntil(menuIcone2());
 		menuIcone2().click();
 	}
 	private WebElement primeiroNomeBox() {
